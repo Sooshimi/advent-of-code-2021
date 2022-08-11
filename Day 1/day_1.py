@@ -4,7 +4,7 @@
 
 # How quickly does the depth increase? 
 # Do this by counting the number of times a depth measurement increases from the previous measurement.
-# E.g. 
+# E.g.  There are 7 increases in the below sequence:
 #   199 (N/A - no previous measurement)
 #   200 (increased)
 #   208 (increased)
@@ -20,25 +20,21 @@
 
 import csv
 
+# read file as string, split string into integers, and add to list
 with open('input.txt') as f:
-    reader = csv.reader(f, delimiter="\t")
-    input = list(reader)
-array = input
+    list = [int(i) for i in f.read().split()]
 
-i = 1
-answer = 0
+i = 1 # start on 2nd index
+answer = 0 # counts number of increases
 
-while i < len(array):
+while i < len(list):
     
-    if array[i] > array[i-1]:
+    if list[i] > list[i-1]: # counts number of increases if current index is larger than previous
         answer += 1
-        print("Index: ", i, "Check: ", array[i], array[i-1], "Answer: ", answer)
+        print("Index: ", i, "Check: ", list[i], list[i-1], "Increase count: ", answer)
     else:
-        print("Index: ", i, "Check: ", array[i], array[i-1], "Answer: ", answer, " DECREASE")
-    
+        print("Index: ", i, "Check: ", list[i], list[i-1], "Increase count: ", answer, " DECREASE")
+
     i += 1
 
-print(array[0])
-print(array[len(array)-1])
-print("Length: ", len(array))
 print("Answer: ", answer)
