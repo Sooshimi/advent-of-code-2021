@@ -32,9 +32,9 @@ while i < len(array):
     
     if array[i] > array[i-1]:
         answer += 1
-        print("Index: ", i+1, "Check: ", array[i], array[i-1], "Answer: ", answer)
+        print("Index: ", i, "Check: ", array[i], array[i-1], "Answer: ", answer)
     else:
-        print("Index: ", i+1, "Check: ", array[i], array[i-1], "Answer: ", answer, " DECREASE")
+        print("Index: ", i, "Check: ", array[i], array[i-1], "Answer: ", answer, " DECREASE")
     
     i += 1
 
