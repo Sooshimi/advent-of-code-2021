@@ -29,7 +29,7 @@ answer = 0 # counts number of increases
 
 while i <= len(list):
     
-    current_window = list[i-3:i]
+    current_window = list[(i-3):i]
     prev_window = list[(i-4):(i-1)]
     
     sum_current_window = sum(current_window)
