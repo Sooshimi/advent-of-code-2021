@@ -29,8 +29,14 @@ answer = 0 # counts number of increases
 
 while i <= len(list):
     
-    if sum(list[i-3:i]) > sum(list[(i-4):(i-1)]): # sums current window with sum of prev window
-        print(list[i-3:i], sum(list[i-3:i]), " > ", list[(i-4):(i-1)], sum(list[(i-4):(i-1)]))
+    current_window = list[i-3:i]
+    prev_window = list[(i-4):(i-1)]
+    
+    sum_current_window = sum(current_window)
+    sum_prev_window = sum(prev_window)
+    
+    if  sum_current_window > sum_prev_window: # sums current window with sum of prev window
+        print(current_window, sum_current_window, " > ", prev_window, sum_prev_window)
         answer += 1
     
     i += 1
