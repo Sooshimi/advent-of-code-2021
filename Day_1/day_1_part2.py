@@ -21,7 +21,7 @@
 
 import csv
 
-with open('input.txt') as f:
+with open('Day_1/input.txt') as f:
     list = [int(i) for i in f.read().split()]
 
 i = 4 # start on index 4

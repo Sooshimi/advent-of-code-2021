@@ -21,7 +21,7 @@
 import csv
 
 # read file as string, split string into integers, and add to list
-with open('input.txt') as f:
+with open('Day_1/input.txt') as f:
     list = [int(i) for i in f.read().split()]
 
 i = 1 # start on 2nd index
