@@ -18,8 +18,6 @@
 
 # Aim: How many measurements are larger than the previous measurement?
 
-import csv
-
 # read file as string, split string into integers, and add to list
 with open('Day_1/input.txt') as f:
     list = [int(i) for i in f.read().split()]

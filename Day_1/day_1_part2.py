@@ -19,8 +19,6 @@
 
 # Count the number of times the sum of measurements in this sliding window increases from the previous sum
 
-import csv
-
 with open('Day_1/input.txt') as f:
     list = [int(i) for i in f.read().split()]
 

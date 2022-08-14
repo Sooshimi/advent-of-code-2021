@@ -18,23 +18,36 @@
 # Calculate the horizontal position and depth you would have after following the planned course. 
 # What do you get if you multiply your final horizontal position by your final depth?
 
-import csv
+##########################################################################################################
 
-# read file as string, split string into integers, and add to list
+# read file as string, split string into integers
 with open('input.txt') as f:
-    list = [int(i) for i in f.read().split()]
+    data = [str(i) for i in f.read().split("\n")]
 
-i = 1 # start on 2nd index
-answer = 0 # counts number of increases
+list = [] # empty list
+forward = 0 # keeps track of horizontal position
+depth = 0 # keeps track of depth
 
-while i < len(list):
-    
-    if list[i] > list[i-1]: # counts number of increases if current index is larger than previous
-        answer += 1
-        print("Index: ", i, "Check: ", list[i], list[i-1], "Increase count: ", answer)
-    else:
-        print("Index: ", i, "Check: ", list[i], list[i-1], "Increase count: ", answer, " DECREASE")
+# create list of key value pairs
+for i in data:
+    item = {} # empty item, empties on next iteration
+    i = i.split(" ") # split item by space
+    key, value = i[0], int(i[1]) # create key and value variables
+    item[key] = value # map key value pair into item object
+    list.append(item) # append item into list
 
-    i += 1
+# iterate for all items in list
+for i in list:
+    for key, value in i.items(): # iterate for all key value pairs
+        if key == "forward":
+            forward += value
+        if key == "up":
+            depth -= value
+        if key == "down":
+            depth += value
 
+answer = forward * depth
+
+print("Forward: ", forward)
+print("Depth: ", depth)
 print("Answer: ", answer)
