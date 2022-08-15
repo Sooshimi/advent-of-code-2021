@@ -21,7 +21,7 @@
 ##########################################################################################################
 
 # read file as string, split string into integers
-with open('input.txt') as f:
+with open('Day_2/input.txt') as f:
     data = [str(i) for i in f.read().split("\n")]
 
 list = [] # empty list
