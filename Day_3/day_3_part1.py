@@ -16,8 +16,8 @@ for i in data:
         if int(bit) == 1:
             one_total[index] += 1 # add one to the corresponding index if 1
 
-# compares the count of 0 and 1's from both zero_total and one_total arrays, and appends to
-# the corresponding gamma/epsilon array, depending on most common value.
+# compares the count of 0 and 1's from both zero_total and one_total arrays, and appends the most
+# common value to the correponding index in gamma or epsilon array, depending on the most common value
 for index, n in enumerate(range(len(zero_total))):
     if zero_total[index] > one_total[index]:
         gamma_rate_array.append(0)
