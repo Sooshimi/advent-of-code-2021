@@ -13,39 +13,90 @@
 with open('Day_3/input.txt') as f:
     data = [str(i) for i in f.read().split("\n")]
 
-zero_total = [0,0,0,0,0,0,0,0,0,0,0,0] # counts number of zeros for each corresponding index
-one_total = [0,0,0,0,0,0,0,0,0,0,0,0] # counts number of ones for each corresponding index
-gamma_rate_array = [] # holds most common bit of numbers for gamma rate
-epsilon_rate_array = [] # holds most common bit of numbers for epsilon rate
+o2_data = data.copy()
+co2_data = data.copy()
 
-for i in data:
+i = 0
+
+while len(o2_data) != 1:
+    zero_total = 0
+    one_total = 0
     
-    # iterate for bit of each row from the diagnostic report
-    for index, bit in enumerate(list(i)):
+    # determine count of zeros and ones for the corresponding index
+    for item in o2_data:
         
-        if int(bit) == 0:
-            zero_total[index] += 1 # add one to the corresponding index if 0
-        if int(bit) == 1:
-            one_total[index] += 1 # add one to the corresponding index if 1
+        # if i == len(item):
+        #     break
 
-# compares the count of 0 and 1's from both zero_total and one_total arrays, and appends the most
-# common value to the correponding index in gamma or epsilon array, depending on the most common value
-for index, n in enumerate(range(len(zero_total))):
-    if zero_total[index] > one_total[index]:
-        gamma_rate_array.append(0)
-        epsilon_rate_array.append(1) # epsilon is inverse of gamma
-    else:
-        gamma_rate_array.append(1)
-        epsilon_rate_array.append(0)
+        if item[i] == '0':
+            zero_total += 1
+        else:
+            one_total += 1
+    
+    # check most common and then keep most common
+    
+    # keep 0's and remove 1's
+    if (zero_total > one_total):
+        for item in o2_data:
+            if item[i] == '1':
+                o2_data.remove(item)
+    
+    # keep 1's and remove 0's
+    elif (zero_total < one_total) or (zero_total == one_total):
+        for item in o2_data:
+            if item[i] == '0':
+                o2_data.remove(item)
+
+    i += 1
+    
+    if i == len(item):
+        i = 0
+
+i = 0
+
+while len(co2_data) != 1:
+    
+    zero_total = 0
+    one_total = 0
+    
+    # determine count of zeros and ones for the corresponding index
+    for item in co2_data:
+
+        if item[i] == '0':
+            zero_total += 1
+        else:
+            one_total += 1
+    
+    # check most common and then keep least common
+    
+    # keep 1's and remove 0's
+    if (zero_total > one_total):
+        for item in co2_data:
+            if item[i] == '0':
+                co2_data.remove(item)
+    
+    # keep 0's and remove 1's
+    elif (zero_total < one_total) or (zero_total == one_total):
+        for item in co2_data:
+            if item[i] == '1':
+                co2_data.remove(item)
+
+    i += 1
+    
+    if i == len(item):
+        i = 0
+
+print(o2_data)
+print(co2_data)
 
 # convert gamma/epsilon arrays to string (binary numbers)
-gamma_rate = str(gamma_rate_array).replace(',','').replace('[', '').replace(']', '').replace(' ','')
-epsilon_rate = str(epsilon_rate_array).replace(',','').replace('[', '').replace(']', '').replace(' ','')
+o2_gen_rating = str(o2_data).replace("'",'').replace('[', '').replace(']', '').replace(' ','')
+co2_gen_rating = str(co2_data).replace("'",'').replace('[', '').replace(']', '').replace(' ','')
 
 # convert binary to decimal
-gamma_dec = int(gamma_rate, 2)
-epsilon_dec = int(epsilon_rate, 2)
+o2_gen_rating = int(o2_gen_rating, 2)
+co2_gen_rating = int(co2_gen_rating, 2)
 
-power_consumption = gamma_dec * epsilon_dec
+life_support_rating = o2_gen_rating * co2_gen_rating
 
-print(power_consumption)
+print("Life Support Rating = ", life_support_rating)
