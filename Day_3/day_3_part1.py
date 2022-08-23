@@ -1,8 +1,10 @@
 with open('Day_3/input.txt') as f:
     data = [str(i) for i in f.read().split("\n")]
 
-zero_total = [0,0,0,0,0,0,0,0,0,0,0,0] # counts number of zeros for each corresponding index
-one_total = [0,0,0,0,0,0,0,0,0,0,0,0] # counts number of ones for each corresponding index
+print()
+
+zero_total = [0] * len(data[0]) # counts number of zeros for each corresponding index
+one_total = [0] * len(data[0]) # counts number of ones for each corresponding index
 gamma_rate_array = [] # holds most common bit of numbers for gamma rate
 epsilon_rate_array = [] # holds most common bit of numbers for epsilon rate
 
