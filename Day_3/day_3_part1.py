@@ -1,8 +1,6 @@
 with open('Day_3/input.txt') as f:
     data = [str(i) for i in f.read().split("\n")]
 
-print()
-
 zero_total = [0] * len(data[0]) # counts number of zeros for each corresponding index
 one_total = [0] * len(data[0]) # counts number of ones for each corresponding index
 gamma_rate_array = [] # holds most common bit of numbers for gamma rate
@@ -15,7 +13,7 @@ for i in data:
         
         if int(bit) == 0:
             zero_total[index] += 1 # add one to the corresponding index if 0
-        if int(bit) == 1:
+        else:
             one_total[index] += 1 # add one to the corresponding index if 1
 
 # compares the count of 0 and 1's from both zero_total and one_total arrays, and appends the most
